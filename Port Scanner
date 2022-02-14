@@ -1,0 +1,14 @@
+import socket
+import sys
+
+first_port = int(input("what port do you want to start from?"))
+
+last_port = int(input("what port do you want to end at?"))
+for port in range(first_port,last_port):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+ # the timer closes it off 
+    socket.setdefaulttimeout(1)
+    var = s.connect_ex(("172.30.196.100" ,port))
+    if var == 0:
+        print("Port "+str (port)+" is open")
+    s.close()
